@@ -13,19 +13,14 @@
 .home-intro {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     background-color: #f7f7f7;
-    padding: 50px;
   }
   
   .intro-slide {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
   }
   
   .slide-content {
@@ -33,24 +28,40 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+  }
+
+  .slide-content-inside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin: 10px;
     width: 60%;
   }
+
+  .slide-content-inside > img {
+    object-fit:scale-down;
+    height: 60%;
+    left: 100%;
+  }
   
-  .slide-content h1 {
+  .slide-content > h1 {
     font-size: 48px;
     font-weight: bold;
-    margin-bottom: 30px;
     text-align: center;
   }
   
-  .slide-content p {
+  .slide-content-inside > p {
     font-size: 24px;
     line-height: 1.5;
-    margin-bottom: 30px;
     text-align: center;
+    margin-left: 10px;
   }
   
-  .slide-content ul {
+  .slide-content-inside > ul {
     list-style: none;
     font-size: 24px;
     line-height: 1.5;
@@ -59,8 +70,9 @@
     padding: 0;
   }
   
-  .slide-content li {
+  .slide-content-inside > ul > li {
     margin-bottom: 10px;
+    list-style: circle;
   }
   
   .slide-buttons {

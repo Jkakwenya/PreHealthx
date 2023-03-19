@@ -17,38 +17,50 @@ function Home() {
     <div className='home-main'>
         <div className="home-intro">
             
-        <Carousel autoPlay={true} interval={5000}>
+        <Carousel autoPlay={true} interval={5000} infiniteLoop={true}>
           <div className="intro-slide">
             <div className="slide-content">
               <h1>A brief introduction to PreHealthX</h1>
-              <p>
+              <div className='slide-content-inside'>
+              <img src='PreHealthx-logos.png' alt=''/>
+                <p>
                 PreHealthX is a comprehensive web-based medicine information sheet that provides
                 accurate and up-to-date medical information to patients, healthcare professionals,
                 and caregivers. Our platform is user-friendly, secure, and easy to navigate,
                 ensuring the safety and well-being of our users.
               </p>
+              </div>
+              
             </div>
           </div>
           <div className="intro-slide">
             <div className="slide-content">
               <h1>Key Features</h1>
+              <div className='slide-content-inside'>
+              <img src='PreHealthx-logos.png' alt=''/>
               <ul>
                 <li>Comprehensive medication information</li>
                 <li>User-friendly interface</li>
                 <li>Secure and confidential</li>
                 <li>Available to patients, healthcare professionals, and caregivers</li>
               </ul>
+              </div>
+              
             </div>
           </div>
           <div className="intro-slide">
             <div className="slide-content">
               <h1>Benefits</h1>
+              <div className='slide-content-inside'>
+              <img src='benefits.jpg' alt=''/>
               <ul>
                 <li>Improved patient safety and well-being</li>
                 <li>Increased access to accurate medical information</li>
                 <li>Streamlined communication between patients and healthcare professionals</li>
                 <li>Enhanced collaboration between patients, healthcare professionals, and caregivers</li>
               </ul>
+              </div>
+              
             </div>
           </div>
         </Carousel>
