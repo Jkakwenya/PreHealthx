@@ -17,7 +17,7 @@ function Home() {
     <div className='home-main'>
         <div className="home-intro">
             
-        <Carousel autoPlay={true} interval={5000} infiniteLoop={true}>
+        <Carousel autoPlay={true} interval={5000} infiniteLoop={true} showThumbs={false}>
           <div className="intro-slide">
             <div className="slide-content">
               <h1>A brief introduction to PreHealthX</h1>
@@ -69,10 +69,27 @@ function Home() {
 
         <div className='home-feat'>
             <h1>Featured Medication</h1>
-            
-                <h2>How</h2>
+        <div className='med-container'>
+          <div className='med-card'>
+            <img src='med1.png' alt='Medication 1' />
+            <h3>AndroGel</h3>
+            <p>Description: AndroGel is used in the treatment of hypogonadism, 
+                male and belongs to the drug class androgens and anabolic steroids. </p>
+          </div>
+          <div className='med-card'>
+            <img src='med2.jpg' alt='Medication 2' />
+            <h3>Fluocinonide</h3>
+            <p>Description: Fluocinonide is a potent corticosteroid that prevents the release 
+                of substances in the body that cause inflammation.</p>
+          </div>
 
-            
+          <div className='med-card'>
+            <img src='med3.jpg' alt='Medication 3' />
+            <h3>Tazarotene</h3>
+            <p>Description: Tazarotene is a compound similar to vitamin A. It helps the skin 
+            to renew itself more quickly and may improve the appearance and texture of skin.</p>
+          </div>
+        </div>     
         </div>
 
         <div className='home-test'>

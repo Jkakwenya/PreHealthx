@@ -118,10 +118,21 @@
     margin-bottom: 30px;
   }
   
-  .home-feat h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
+ .med-container {
+    display: flex;
+    flex-direction: row;
+ }
+
+ .med-card {
+    margin-right: 10px;
+ }
+
+ .med-card > img{
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 15px;
+ }
   
   .home-test {
     display: flex;
