@@ -2,7 +2,7 @@ import React from 'react'
 
 function Profile() {
   return (
-    <div>
+    <div className='profile-cont'>
       <h1>My Profile</h1>
       <h2>Personal Information</h2>
       <p>Name: {/*userInfo.name*/}</p>

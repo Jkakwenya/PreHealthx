@@ -54,6 +54,7 @@ function Header() {
     <img onClick={homeClick} className='header-logo' src='PreHealthx-logos_white.png' alt=''/>
     <div className='header-nav'>
         <div className='header-nav-1'><Link to= '/' className='header-link'><span>Home</span></Link></div>
+        <div className='header-nav-1'><Link to= '/chatbot' className='header-link'><span>Chat</span></Link></div>
         <div className="header-nav-1">
       {user ? (
         // User is signed in, display Logout button
