@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React from 'react'
+import { Link} from 'react-router-dom'
 
 function Profile() {
   return (
@@ -21,7 +24,7 @@ function Profile() {
           <p>Frequency: {medication.frequency}</p>
         </div>
       ))*/}
-      <h2>Appointments</h2>
+      <Link to='/medical-planner' > <h2>Appointments</h2></Link>
       {/*userInfo.appointments.map((appointment) => (
         <div key={appointment.id}>
           <p>Date: {appointment.date}</p>

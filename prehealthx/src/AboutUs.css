@@ -1,0 +1,46 @@
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .about-heading {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+  
+  .about-subheading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .about-section {
+    margin-bottom: 40px;
+  }
+  
+  .about-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .about-list li {
+    margin-bottom: 10px;
+  }
+  
+  .about-list li:before {
+    content: "\2022";
+    margin-right: 10px;
+    color: #007bff;
+    font-weight: bold;
+  }
+  

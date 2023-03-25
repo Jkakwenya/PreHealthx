@@ -1,0 +1,87 @@
+.med-plan-main {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .med-plan-points {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .med-plan-form {
+    margin-top: 20px;
+  }
+  
+  .med-plan-form label {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .med-plan-form input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .med-plan-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .med-plan-schedule {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .med-plan-schedule caption {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .med-plan-schedule th, .med-plan-schedule td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .med-plan-schedule th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #f2f2f2;
+    color: #444;
+  }
+  
+  .med-plan-form button:hover {
+    background-color: #3e8e41;
+  }
+  
+  
+  .med-plan-schedule button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .med-plan-schedule button:hover {
+    background-color: #cc2d26;
+  }
+  

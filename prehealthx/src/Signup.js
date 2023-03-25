@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { auth, db } from './firebase';
 
 function Signup() {
@@ -23,7 +23,8 @@ function Signup() {
         country: country,
         dob: dob,
         city: city,
-        email: email
+        email: email,
+        points: 10,
       }
 
       const handleFirstNameChange = (event) => {
@@ -61,6 +62,9 @@ function Signup() {
     if (auth){
       const user = auth.user;
       const userRef = collection(db, `users/${user?.uid}/info`);
+      const plannerRef = collection(db, `users/${user?.uid}/medPlanner`);
+      const reviewRef = collection(db, `users/${user?.uid}/medReview`);
+
       addDoc(userRef, newUser)
         .then(() => {
           console.log("Data written to database");
@@ -68,6 +72,16 @@ function Signup() {
         .catch((error) => {
           console.error("Error writing data to database: ", error);
         });
+
+        // Add empty documents to 'medPlanner' and 'medReview' collections with custom IDs
+        const plannerDocRef = doc(plannerRef, '0001');
+        const plannerDocRef2 = doc(plannerRef, '0002');
+        const reviewDocRef = doc(reviewRef, '0001');
+        const reviewDocRef2 = doc(reviewRef, '0002');
+        setDoc(plannerDocRef, { name: 'Add Medication', points: 10 });
+        setDoc(plannerDocRef2, { name: 'Delete Medication', points: -5 });
+        setDoc(reviewDocRef, { name: 'Add Review', points: 20 });
+        setDoc(reviewDocRef2, { name: 'Delete Review', points: -10 });
       navigate('/')
     }
   }).catch(error => alert(error.message));}

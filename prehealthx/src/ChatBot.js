@@ -55,7 +55,7 @@ function ChatBot() {
 
         const systemMessage = {
             role: 'system',
-            content: 'Speak like a poet.'
+            content: 'Speak like a poet rhyming.'
         }
 
         const apiRequestBody = {
@@ -94,7 +94,7 @@ function ChatBot() {
         <ChatContainer>
             <MessageList 
             scrollBehavior='smooth'
-            typingIndicator={typing ? <TypingIndicator content='ChatGPT is typing' /> : null}>
+            typingIndicator={typing ? <TypingIndicator content='typing' /> : null}>
                 {messages.map((message, i) =>{
                     return <Message key={i} model={message} />
                 })}
