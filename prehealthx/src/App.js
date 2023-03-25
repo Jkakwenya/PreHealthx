@@ -18,12 +18,34 @@ import MedicalPlanner from './MedicalPlanner'
 import AboutUs from './AboutUs';
 import Privacy from './Privacy';
 import Terms from './Terms';
+import Update from './Update';
+import MedicalRecords from './MedicalRecords';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
+      <Route
+        path='/medical-records'
+        element={(
+          <>
+          <Header />
+          <MedicalRecords />
+          <Footer />
+          </>
+        )} 
+        />
+      <Route
+        path='/update'
+        element={(
+          <>
+          <Header />
+          <Update />
+          <Footer />
+          </>
+        )} 
+        />
       <Route
         path='/terms-and-conditions'
         element={(

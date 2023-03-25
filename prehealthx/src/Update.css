@@ -1,0 +1,52 @@
+.up-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .up-profile-info {
+    width: 80%;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 0 5px #ccc;
+  }
+  
+  .up-profile-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  .up-profile-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .up-profile-row p {
+    margin-right: 10px;
+  }
+  
+  .up-profile-stats {
+    width: 80%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .up-prof-btn {
+    background-color: #0077ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .up-prof-btn:hover {
+    background-color: #005dff;
+  }
+  

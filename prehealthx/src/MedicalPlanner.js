@@ -119,8 +119,6 @@ useEffect(() => {
         <label >Notes:</label>
         <input type="text" value={notes} onChange={handleNotesChange} />
         <br />
-        <label>Created At:</label>
-        <br />
         <button className='med-plan-add-btn' onClick={handleSubmit}>Add Medication</button>
       </form>
       {medicationSchedule.length > 0 ? (
