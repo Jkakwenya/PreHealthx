@@ -4,9 +4,11 @@ import React, { useState, useEffect } from 'react'
 import { Link} from 'react-router-dom'
 import { collection, doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from './firebase';
+import './Profile.css'
 
 function Profile() {
   const [userData, setUserData] = useState([]);
+  const [userRecData, setUserRecData] = useState([]);
   const [userInfoData, setUserInfoData] = useState([]);
   const [displayName, setDisplayName] = useState('');
 
@@ -16,6 +18,7 @@ function Profile() {
     
       const userDocRef = collection(db, `users/${user?.uid}/medication`);
       const userRef = collection(db, `users/${user?.uid}/info`);
+      const userRecRef = collection(db, `users/${user?.uid}/medical-records`);
 
       onSnapshot(userRef, (snapshot) => {
         snapshot.docs.forEach((doc) => {
@@ -34,6 +37,17 @@ function Profile() {
           }
         });
         setUserData(updatedUserData);
+      });
+
+      onSnapshot(userRecRef, (snapshot) => {
+        const updatedUserRecData = snapshot.docs.map((doc) => {
+          const medicalRecData = doc.data();
+          return {
+            ...medicalRecData,
+            medicalRecID: doc.id // assign medicationID using doc.id
+          }
+        });
+        setUserRecData(updatedUserRecData);
       });
      
   }, []);
@@ -72,13 +86,13 @@ function Profile() {
       ))*/}
       <Link to='/medical-records'><h2>Medical Records</h2></Link>
       
-      {/*userInfo.medicalRecords.map((record) => (
-        <div key={record.id}>
-          <p>Name: {record.name}</p>
-          <p>Date: {record.date}</p>
-          <p>Type: {record.type}</p>
-        </div>
-      ))*/}
+      {userRecData.length > 0 && (
+            <div >
+              <p>Name: {userRecData[0].name}</p>
+              <p>Type: {userRecData[0].type}</p>
+              <p>Date: {userRecData[0].date}</p>
+            </div>
+          )}
       <h2>Billing Information</h2>
       <p>Payment Method: {/*userInfo.paymentMethod*/}</p>
       <p>Payment History: {/*userInfo.paymentHistory.join(', ')*/}</p>

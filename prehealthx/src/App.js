@@ -20,12 +20,34 @@ import Privacy from './Privacy';
 import Terms from './Terms';
 import Update from './Update';
 import MedicalRecords from './MedicalRecords';
+import MedicalNews from './MedicalNews';
+import Communications from './Communications';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
+      <Route
+        path='/communications'
+        element={(
+          <>
+          <Header />
+          <Communications />
+          <Footer />
+          </>
+        )} 
+        />
+      <Route
+        path='/medical-news'
+        element={(
+          <>
+          <Header />
+          <MedicalNews />
+          <Footer />
+          </>
+        )} 
+        />
       <Route
         path='/medical-records'
         element={(

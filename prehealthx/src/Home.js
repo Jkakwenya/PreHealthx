@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
+import { Link} from 'react-router-dom' 
 import './Home.css'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -14,8 +15,9 @@ function Home() {
 
   return (
     <div className='home-main'>
-        <div className="home-intro">
-            
+      <Link to='/communications'><div><h1>Connect with Health Professional</h1></div></Link>
+      
+        <div className="home-intro">   
         <Carousel autoPlay={true} interval={5000} infiniteLoop={true} showThumbs={false}>
           <div className="intro-slide">
             <div className="slide-content">
@@ -90,9 +92,28 @@ function Home() {
           </div>
         </div>     
         </div>
+        <Link to='/medical-news'><div>Medical News</div></Link>
+        
 
         <div className='home-test'>
             <h1>Testimonials</h1>
+    <div className='testimonial-container'>
+    <div className='testimonial'>
+      <img src='testimonial1.jpg' alt='Testimonial 1' />
+      <p>"PreHealthX has been a lifesaver for me and my family. The information provided is accurate, up-to-date, and easy to understand. Thank you for creating such a valuable resource."</p>
+      <h3>John Doe</h3>
+    </div>
+    <div className='testimonial'>
+      <img src='testimonial2.jpg' alt='Testimonial 2' />
+      <p>"As a healthcare professional, I rely on PreHealthX for accurate medication information and dosages. The platform is user-friendly and has saved me a lot of time and frustration."</p>
+      <h3>Jane Smith</h3>
+    </div>
+    <div className='testimonial'>
+      <img src='testimonial3.jpg' alt='Testimonial 3' />
+      <p>"I was looking for reliable medical information online and stumbled upon PreHealthX. I was impressed by the breadth of information available and how easy it was to navigate the site. Highly recommended."</p>
+      <h3>Mark Johnson</h3>
+    </div>
+  </div>
         </div>
       
     </div>

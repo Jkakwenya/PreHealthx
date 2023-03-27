@@ -30,8 +30,9 @@ function MedicalRecords() {
   };
 
   const handleSubmit = async (event) => {
-    const userDocRef = collection(db, `users/${user?.uid}/medical-records`);
     event.preventDefault();
+    const userDocRef = collection(db, `users/${user?.uid}/medical-records`);
+    
     const newDocRef = await addDoc(userDocRef, { // add medical records to collection
         ...records,
         id: '' // add empty string property for ID
@@ -52,7 +53,7 @@ function MedicalRecords() {
   
     const snapshot = await getDocs(userRef);
     snapshot.docs.forEach((doc) => {
-      updateDoc(doc.ref, {points: increment(10)})
+      updateDoc(doc.ref, {points: increment(15)})
         .catch((error) => {
           console.error("Error updating points: ", error);
         });
@@ -65,8 +66,8 @@ useEffect(() => {
             setPoints(doc.data().points);
         })})
 
-    const userDocRef = collection(db, `users/${user?.uid}/medical-records`);
-  onSnapshot(userDocRef, (querySnapshot) => {
+    const userDocRef1 = collection(db, `users/${user?.uid}/medical-records`);
+  onSnapshot(userDocRef1, (querySnapshot) => {
     const data = querySnapshot.docs.map((doc) => {
       return {
         id: doc.id,
@@ -80,7 +81,6 @@ useEffect(() => {
 
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this medical Record?")) {
-            console.log('ID', id)
           const userDocRef = collection(db, `users/${user?.uid}/medical-records`);
           if (typeof id === "string") {
             await deleteDoc(doc(userDocRef, id));
@@ -103,7 +103,7 @@ useEffect(() => {
         <button className='med-rec-add-btn' onClick={handleSubmit}>Add Medical Record</button>
       </form>
       {medicalRecords.length > 0 ? (
-        <table className='med-plan-schedule'>
+        <table className='med-rec-schedule'>
             <caption>Medical Records</caption>
           <thead>
       <tr>

@@ -11,11 +11,15 @@ import {
     MessageInput,
     TypingIndicator
   } from "@chatscope/chat-ui-kit-react";
+  import SpeechRecognition from './SpeechRecognition';
 
   const API_KEY = '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'
-
+  
 function ChatBot() {
+    
     const [typing, setTyping] = useState(false);
+    const [isSpeaking, setIsSpeaking] = useState(false);
+    const [messageToRead, setMessageToRead] = useState('');
 
     const [messages, setMessages] = useState([
         {
@@ -37,6 +41,17 @@ function ChatBot() {
         setMessages(newMessages);
 
         setTyping(true);
+
+        if (message.toLowerCase() === 'hey chat') {
+            const initialMessage = {
+              message: 'Hello there',
+              sender: 'ChatGPT'
+            }
+            
+            setMessages([initialMessage]);
+            
+            return;
+          }
         // process message to chatgpt
         await processMessageToOpenAI(newMessages);
     }
@@ -47,6 +62,15 @@ function ChatBot() {
             let role = '';
             if(messageObject.sender === 'ChatGPT') {
                 role='assistant'
+                const chatBotMessage = {
+                    message: 'Hello there',
+                    sender: 'ChatGPT'
+                  };
+                  
+                  const chatBotEvent = new CustomEvent('chatBotMessage', { detail: chatBotMessage });
+                  
+                  document.dispatchEvent(chatBotEvent);
+                  
             } else {
                 role = 'user'
             }
@@ -73,6 +97,7 @@ function ChatBot() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(apiRequestBody)
+            //
         }).then((data) => {
             return data.json();
         }).then((data) => {
@@ -82,14 +107,24 @@ function ChatBot() {
                     message: data.choices[0].message.content,
                     sender: 'ChatGPT'
                 }]
+                
             );
+            setMessageToRead(data.choices[0].message.content);
             setTyping(false);
+            
         });
     }
 
 
+  function speakMessage() {
+    window.speechSynthesis.cancel();
+    const msg = new SpeechSynthesisUtterance(messageToRead.replace(/&nbsp;/g, ' '));
+    window.speechSynthesis.speak(msg);}
+
+
   return (
-    <div className='chat-cont'>
+    <div className='chat-main-cont'>
+        <div className='chat-cont'>
       <MainContainer>
         <ChatContainer>
             <MessageList 
@@ -103,6 +138,31 @@ function ChatBot() {
         </ChatContainer>
       </MainContainer>
     </div>
+    <div className="chat-message">
+    <div className="chat-message-text">
+    <p>Check out these resources for more information:</p>
+    <ul>
+      <li><a href="https://www.webmd.com/">WebMD</a></li>
+      <li><a href="https://www.mayoclinic.org/">Mayo Clinic</a></li>
+      <li><a href="https://www.cdc.gov/">Centers for Disease Control and Prevention (CDC)</a></li>
+    </ul>
+    <p>Here are some common medical conditions you might want to learn more about:</p>
+    <ul>
+      <li>High blood pressure</li>
+      <li>Diabetes</li>
+      <li>Asthma</li>
+      <li>Arthritis</li>
+      <li>Depression</li>
+    </ul>
+  </div>
+      <button onClick={() => setIsSpeaking(!isSpeaking)}>
+        {isSpeaking ? 'Stop Speaking' : 'Speak Message'}
+      </button>
+      {isSpeaking && speakMessage()}
+      <div className={isSpeaking ? 'chat-message-icon speaking' : 'chat-message-icon'}></div>
+    </div>
+    </div>
+    
   )
 }
 

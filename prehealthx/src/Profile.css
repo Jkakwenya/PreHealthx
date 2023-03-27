@@ -1,0 +1,44 @@
+.profile-cont {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .profile-cont h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-cont h2 {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-cont p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .profile-cont .prof-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-cont a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .profile-cont a:hover {
+    text-decoration: underline;
+  }
+  

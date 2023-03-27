@@ -43,19 +43,19 @@
     background-color: #3e8e41;
   }
   
-  .med-plan-schedule {
+  .med-rec-schedule {
     border-collapse: collapse;
     margin-bottom: 20px;
     min-width: 600px;
     max-width: 800px;
   }
   
-  .med-plan-schedule caption {
+  .med-rec-schedule caption {
     font-size: 24px;
     margin-bottom: 10px;
   }
   
-  .med-plan-schedule th {
+  .med-rec-schedule th {
     font-size: 20px;
     text-align: left;
     background-color: #4CAF50;
@@ -64,7 +64,7 @@
     border: 1px solid #ddd;
   }
   
-  .med-plan-schedule td {
+  .med-rec-schedule td {
     font-size: 18px;
     padding: 10px;
     border: 1px solid #ddd;
