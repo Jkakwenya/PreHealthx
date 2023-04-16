@@ -23,11 +23,18 @@ import Update from './Update';
 import MedicalRecords from './MedicalRecords';
 import MedicalNews from './MedicalNews';
 import Communications from './Communications';
+import {Helmet} from 'react-helmet'
 
 function App() {
   return (
     <ErrorBoundary>
       <div className="App">
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>PreHealthX</title>
+                <link rel="canonical" href="https://pre-healthx.web.app" />
+                <meta name="description" content="Get accurate and up-to-date medical information with PreHealthX - the user-friendly and secure medicine information sheet for patients, healthcare professionals, and caregivers." />
+            </Helmet>
       <BrowserRouter>
       <Routes>
       <Route

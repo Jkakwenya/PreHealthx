@@ -17,12 +17,11 @@ import {
 
   
 
-  const API_KEY = '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'
+  const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
   
 function ChatBot() {
 
     const user = auth.currentUser;
-    
     
     const [typing, setTyping] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);

@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import './MedicalNews.css'
 
+const API_KEY = process.env.REACT_APP_NEWS_API_KEY
+
 function MedicalNews() {
 
     const [news, setNews] = useState([]);
+    
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=1384bd54816e47f3a55156f0a790f3f9');
+        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=${API_KEY}`);
         setNews(response.data.articles);
       } catch (error) {
         console.error(error);
