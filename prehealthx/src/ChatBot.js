@@ -11,11 +11,18 @@ import {
     MessageInput,
     TypingIndicator
   } from "@chatscope/chat-ui-kit-react";
-  import SpeechRecognition from './SpeechRecognition';
+  import SpeechRecognition from './SpeechRecognition'; 
+  import {storage, auth} from './firebase'
+  import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
+
+  
 
   const API_KEY = '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'
   
 function ChatBot() {
+
+    const user = auth.currentUser;
+    
     
     const [typing, setTyping] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -32,7 +39,8 @@ function ChatBot() {
         const newMessage = {
             message: message,
             sender: 'user', 
-            direction: 'outgoing'
+            direction: 'outgoing',
+            
         }
 
         const newMessages = [...messages, newMessage];
@@ -74,12 +82,18 @@ function ChatBot() {
             } else {
                 role = 'user'
             }
+
+            
+
+
             return {role: role, content: messageObject.message}
         });
 
+        
+
         const systemMessage = {
             role: 'system',
-            content: 'Speak like a poet rhyming.'
+            content: 'Give a summary in simple terms.'
         }
 
         const apiRequestBody = {
@@ -111,6 +125,13 @@ function ChatBot() {
             );
             setMessageToRead(data.choices[0].message.content);
             setTyping(false);
+
+            // remove file from storage after message is sent
+            chatMessages.forEach((messageObject) => {
+              if (messageObject.file) {
+                  localStorage.removeItem(messageObject.file);
+              }
+        });
             
         });
     }
@@ -120,6 +141,33 @@ function ChatBot() {
     window.speechSynthesis.cancel();
     const msg = new SpeechSynthesisUtterance(messageToRead.replace(/&nbsp;/g, ' '));
     window.speechSynthesis.speak(msg);}
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      const storageRef = ref(storage, `users/${user?.uid}/file/${file.name}`);
+      
+      uploadBytes(storageRef, file)
+    .then(async (snapshot) => {
+      console.log(`File uploaded successfully.`);
+      const fileUrl = await getDownloadURL(snapshot.ref);
+
+      // send the URL to ChatGPT for processing
+      handleSend(fileUrl);
+      console.log(`File deleted successfully.`);
+
+      // delete the file from Firebase storage
+      deleteObject(snapshot.ref)
+        .then(() => {
+          console.log(`File deleted successfully.`);
+        })
+        .catch((error) => {
+          console.error(`Error deleting file:`, error);
+        });
+    })
+    .catch((error) => {
+      console.error(`Error uploading file:`, error);
+    });
+  }
 
 
   return (
@@ -155,12 +203,16 @@ function ChatBot() {
       <li>Depression</li>
     </ul>
   </div>
-      <button onClick={() => setIsSpeaking(!isSpeaking)}>
+      <button className='chatbot-btn' onClick={() => setIsSpeaking(!isSpeaking)}>
         {isSpeaking ? 'Stop Speaking' : 'Speak Message'}
       </button>
+      
       {isSpeaking && speakMessage()}
       <div className={isSpeaking ? 'chat-message-icon speaking' : 'chat-message-icon'}></div>
+      <div>Enter File to Summarize</div>
+      <input type="file" onChange={handleFileUpload} />
     </div>
+    
     </div>
     
   )

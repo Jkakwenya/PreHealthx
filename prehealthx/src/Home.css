@@ -6,8 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    padding: 20px;
+
 }
 
 .home-intro {
@@ -38,7 +37,7 @@
     justify-content: space-evenly;
     margin-left: 10px;
     margin-right: 10px;
-    margin: 10px;
+
     width: 60%;
   }
 
@@ -108,7 +107,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 50px;
     background-color: #fff;
   }
   
@@ -140,7 +138,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 50px;
     background-color: #f7f7f7;
   }
   
@@ -148,6 +145,17 @@
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 30px;
+  }
+
+  .med-pic {
+    width: 20%;
+  }
+
+  .med-news {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
   }
 
   .testimonial-container {

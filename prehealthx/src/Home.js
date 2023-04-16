@@ -92,9 +92,8 @@ function Home() {
           </div>
         </div>     
         </div>
-        <Link to='/medical-news'><div>Medical News</div></Link>
-        
-
+        <Link className='med-news' to='/medical-news'><div>Medical News</div>
+          <img className='med-pic' src='medical.jpg' alt='' /></Link>
         <div className='home-test'>
             <h1>Testimonials</h1>
     <div className='testimonial-container'>

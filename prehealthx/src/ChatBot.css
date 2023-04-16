@@ -1,6 +1,6 @@
 .chat-cont {
     position: relative;
-    height: 800px;
+    height: 720px;
     width: 700px;
   }
   
@@ -64,5 +64,9 @@
   
   .chat-message-text a:hover {
     border-bottom: 1px solid #EA4335;
+  }
+
+  .chatbot-btn {
+    background-color: rgba(70, 205, 7, 0.913);
   }
   

@@ -4,6 +4,7 @@ import './App.css';
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
+import ErrorBoundary from './ErrorBoundary';
 import Header from "./Header";
 import Home from "./Home"
 import Contact from './Contact'
@@ -25,7 +26,8 @@ import Communications from './Communications';
 
 function App() {
   return (
-    <div className="App">
+    <ErrorBoundary>
+      <div className="App">
       <BrowserRouter>
       <Routes>
       <Route
@@ -176,6 +178,7 @@ function App() {
         />
         </Routes></BrowserRouter>
     </div>
+    </ErrorBoundary>
   );
 }
 
