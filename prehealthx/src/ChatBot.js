@@ -176,7 +176,7 @@ function ChatBot() {
         <div className='chat-cont'>
           <div className='card'>
             <div className='card-body'>
-              <MainContainer>
+              <MainContainer responsive>
                 <ChatContainer>
                   <MessageList
                     scrollBehavior='smooth'
