@@ -14,6 +14,8 @@ import {
   import SpeechRecognition from './SpeechRecognition'; 
   import {storage, auth} from './firebase'
   import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
+  import 'bootstrap/dist/js/bootstrap.min.js';
+
 
   
 
@@ -81,9 +83,6 @@ function ChatBot() {
             } else {
                 role = 'user'
             }
-
-            
-
 
             return {role: role, content: messageObject.message}
         });
@@ -170,50 +169,73 @@ function ChatBot() {
 
 
   return (
-    <div className='chat-main-cont'>
+    <div className='container'>
+  <div className='row'>
+    <div className='col-md-8'>
+      <div className='chat-main-cont'>
         <div className='chat-cont'>
-      <MainContainer>
-        <ChatContainer>
-            <MessageList 
-            scrollBehavior='smooth'
-            typingIndicator={typing ? <TypingIndicator content='typing' /> : null}>
-                {messages.map((message, i) =>{
-                    return <Message key={i} model={message} />
-                })}
-            </MessageList>
-            <MessageInput placeholder='Type Message here ' onSend={handleSend}/>
-        </ChatContainer>
-      </MainContainer>
+          <div className='card'>
+            <div className='card-body'>
+              <MainContainer>
+                <ChatContainer>
+                  <MessageList
+                    scrollBehavior='smooth'
+                    typingIndicator={typing ? <TypingIndicator content='typing' /> : null}
+                  >
+                    {messages.map((message, i) => {
+                      return <Message key={i} model={message} />;
+                    })}
+                  </MessageList>
+                  <MessageInput placeholder='Type Message here ' onSend={handleSend} />
+                </ChatContainer>
+              </MainContainer>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div className="chat-message">
-    <div className="chat-message-text">
-    <p>Check out these resources for more information:</p>
-    <ul>
-      <li><a href="https://www.webmd.com/">WebMD</a></li>
-      <li><a href="https://www.mayoclinic.org/">Mayo Clinic</a></li>
-      <li><a href="https://www.cdc.gov/">Centers for Disease Control and Prevention (CDC)</a></li>
-    </ul>
-    <p>Here are some common medical conditions you might want to learn more about:</p>
-    <ul>
-      <li>High blood pressure</li>
-      <li>Diabetes</li>
-      <li>Asthma</li>
-      <li>Arthritis</li>
-      <li>Depression</li>
-    </ul>
+    <div className='col-md-4'>
+      <div className='chat-message'>
+        <div className='card'>
+          <div className='card-body'>
+            <div className='chat-message-text'>
+              <p>Check out these resources for more information:</p>
+              <ul>
+                <li>
+                  <a href='https://www.webmd.com/'>WebMD</a>
+                </li>
+                <li>
+                  <a href='https://www.mayoclinic.org/'>Mayo Clinic</a>
+                </li>
+                <li>
+                  <a href='https://www.cdc.gov/'>
+                    Centers for Disease Control and Prevention (CDC)
+                  </a>
+                </li>
+              </ul>
+              <p>Here are some common medical conditions you might want to learn more about:</p>
+              <ul>
+                <li>High blood pressure</li>
+                <li>Diabetes</li>
+                <li>Asthma</li>
+                <li>Arthritis</li>
+                <li>Depression</li>
+              </ul>
+            </div>
+            <button className='btn btn-primary chatbot-btn' onClick={() => setIsSpeaking(!isSpeaking)}>
+              {isSpeaking ? 'Stop Speaking' : 'Speak Message'}
+            </button>
+            {isSpeaking && speakMessage()}
+            <div className={isSpeaking ? 'chat-message-icon speaking' : 'chat-message-icon'}></div>
+            <div>Enter File to Summarize</div>
+            <input type='file' className='form-control-file' onChange={handleFileUpload} />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-      <button className='chatbot-btn' onClick={() => setIsSpeaking(!isSpeaking)}>
-        {isSpeaking ? 'Stop Speaking' : 'Speak Message'}
-      </button>
-      
-      {isSpeaking && speakMessage()}
-      <div className={isSpeaking ? 'chat-message-icon speaking' : 'chat-message-icon'}></div>
-      <div>Enter File to Summarize</div>
-      <input type="file" onChange={handleFileUpload} />
-    </div>
-    
-    </div>
-    
+</div>
+
   )
 }
 
