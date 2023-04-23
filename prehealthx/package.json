@@ -23,7 +23,7 @@
     "react-slick": "^0.29.0",
     "request": "^2.88.2",
     "slick-carousel": "^1.8.1",
-    "vm2": "^3.9.16",
+    "vm2": "^3.9.17",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
