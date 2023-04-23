@@ -91,7 +91,7 @@ function ChatBot() {
 
         const systemMessage = {
             role: 'system',
-            content: 'Give a summary in simple terms.'
+            content: 'Explain in detail for easy understanding.'
         }
 
         const apiRequestBody = {
