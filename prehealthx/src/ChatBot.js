@@ -173,7 +173,7 @@ function ChatBot() {
   <div className='row'>
     <div className='col-md-8'>
       <div className='chat-main-cont'>
-        <div className='chat-cont'>
+        <div className='chat-cont overflow-auto'>
           <div className='card'>
             <div className='card-body'>
               <MainContainer responsive>
